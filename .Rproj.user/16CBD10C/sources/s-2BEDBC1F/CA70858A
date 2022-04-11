@@ -3,7 +3,7 @@
     "path": "~/Projects/FMI_RNAseq/NTRK/project/de_analysis.Rmd",
     "project_path": "de_analysis.Rmd",
     "type": "r_markdown",
-    "hash": "319228163",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1649679358368.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "13,0",
-        "scrollLine": "2"
+        "cursorPosition": "12,3",
+        "scrollLine": "150"
     },
     "folds": "",
     "lastKnownWriteTime": 1649687932,

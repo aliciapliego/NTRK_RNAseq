@@ -3,6 +3,8 @@ output_dir: "."
 navbar:
   title: "RNAseq-NTRK"
   left:
+    - text: "Home"
+      href: index.html
     - text: "Clustering analysis"
       href: de_analysis.html
     - text: "Differential expression"
