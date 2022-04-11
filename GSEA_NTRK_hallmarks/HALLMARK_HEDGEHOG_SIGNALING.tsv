@@ -1,0 +1,26 @@
+NAME	SYMBOL	TITLE	RANK IN GENE LIST	RANK METRIC SCORE	RUNNING ES	CORE ENRICHMENT	
+row_0	TLE3	"TLE family member 3, transcriptional corepressor [Source:HGNC Symbol;Acc:HGNC:11839]"	28	236.06146240234375	0.1750326	Yes	
+row_1	NRP2	neuropilin 2 [Source:HGNC Symbol;Acc:HGNC:8005]	43	214.48184204101562	0.3351126	Yes	
+row_2	NRP1	neuropilin 1 [Source:HGNC Symbol;Acc:HGNC:8004]	135	154.82232666015625	0.44325468	Yes	
+row_3	L1CAM	L1 cell adhesion molecule [Source:HGNC Symbol;Acc:HGNC:6470]	219	121.68017578125	0.5271956	Yes	
+row_4	HEY1	hes related family bHLH transcription factor with YRPW motif 1 [Source:HGNC Symbol;Acc:HGNC:4880]	455	73.23123168945312	0.5607621	Yes	
+row_5	TLE1	"TLE family member 1, transcriptional corepressor [Source:HGNC Symbol;Acc:HGNC:11837]"	765	47.21207046508789	0.5679744	Yes	
+row_6	PML	PML nuclear body scaffold [Source:HGNC Symbol;Acc:HGNC:9113]	831	43.704891204833984	0.5949006	Yes	
+row_7	UNC5C	unc-5 netrin receptor C [Source:HGNC Symbol;Acc:HGNC:12569]	1195	30.930095672607422	0.58491653	Yes	
+row_8	NKX6-1	NK6 homeobox 1 [Source:HGNC Symbol;Acc:HGNC:7839]	1253	29.09952735900879	0.6015875	Yes	
+row_9	RASA1	RAS p21 protein activator 1 [Source:HGNC Symbol;Acc:HGNC:9871]	1349	27.139148712158203	0.6133024	Yes	
+row_10	VEGFA	vascular endothelial growth factor A [Source:HGNC Symbol;Acc:HGNC:12680]	1476	24.457557678222656	0.62016004	Yes	
+row_11	NRCAM	neuronal cell adhesion molecule [Source:HGNC Symbol;Acc:HGNC:7994]	2203	15.377026557922363	0.56522083	No	
+row_12	AMOT	angiomotin [Source:HGNC Symbol;Acc:HGNC:17810]	2273	14.74937629699707	0.56999636	No	
+row_13	SLIT1	slit guidance ligand 1 [Source:HGNC Symbol;Acc:HGNC:11085]	2734	11.341262817382812	0.5363888	No	
+row_14	DPYSL2	dihydropyrimidinase like 2 [Source:HGNC Symbol;Acc:HGNC:3014]	3291	8.291177749633789	0.49169216	No	
+row_15	THY1	Thy-1 cell surface antigen [Source:HGNC Symbol;Acc:HGNC:11801]	3604	7.024251461029053	0.46839485	No	
+row_16	MYH9	myosin heavy chain 9 [Source:HGNC Symbol;Acc:HGNC:7579]	3960	5.829896450042725	0.4402598	No	
+row_17	LDB1	LIM domain binding 1 [Source:HGNC Symbol;Acc:HGNC:6532]	6007	-2.7661404609680176	0.2549096	No	
+row_18	ACHE	acetylcholinesterase (Cartwright blood group) [Source:HGNC Symbol;Acc:HGNC:108]	8534	-11.69061279296875	0.032301415	No	
+row_19	VLDLR	very low density lipoprotein receptor [Source:HGNC Symbol;Acc:HGNC:12698]	8908	-14.642373085021973	0.009147381	No	
+row_20	CDK6	cyclin dependent kinase 6 [Source:HGNC Symbol;Acc:HGNC:1777]	8997	-15.604497909545898	0.012825654	No	
+row_21	ADGRG1	adhesion G protein-coupled receptor G1 [Source:HGNC Symbol;Acc:HGNC:4512]	9509	-23.996538162231445	-0.015932897	No	
+row_22	CDK5R1	cyclin dependent kinase 5 regulatory subunit 1 [Source:HGNC Symbol;Acc:HGNC:1775]	9517	-24.213682174682617	0.0016426783	No	
+row_23	OPHN1	oligophrenin 1 [Source:HGNC Symbol;Acc:HGNC:8148]	9862	-32.437957763671875	-0.005466438	No	
+row_24	CELSR1	cadherin EGF LAG seven-pass G-type receptor 1 [Source:HGNC Symbol;Acc:HGNC:1850]	10794	-138.40753173828125	0.0133749405	No	

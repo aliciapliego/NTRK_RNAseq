@@ -1,0 +1,16 @@
+name: "personal-website"
+output_dir: "."
+navbar:
+  title: "RNAseq-NTRK"
+  left:
+    - text: "Clustering analysis"
+      href: de_analysis.html
+    - text: "Differential expression"
+      href: differential_expression_NTRK.html
+
+output:
+  html_document:
+    theme: sandstone
+    highlight: default
+    include:
+      after_body: footer.html

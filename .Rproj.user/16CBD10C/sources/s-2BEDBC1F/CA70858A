@@ -1,0 +1,26 @@
+{
+    "id": "CA70858A",
+    "path": "~/Projects/FMI_RNAseq/NTRK/project/de_analysis.Rmd",
+    "project_path": "de_analysis.Rmd",
+    "type": "r_markdown",
+    "hash": "319228163",
+    "contents": "",
+    "dirty": false,
+    "created": 1649679358368.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "13,0",
+        "scrollLine": "2"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1649687932,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1649687932212,
+    "read_only": false,
+    "read_only_alternatives": []
+}

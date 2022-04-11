@@ -1,0 +1,37 @@
+NAME	SYMBOL	TITLE	RANK IN GENE LIST	RANK METRIC SCORE	RUNNING ES	CORE ENRICHMENT	
+row_0	TJP1	tight junction protein 1 [Source:HGNC Symbol;Acc:HGNC:11827]	176	134.44595336914062	0.09074651	Yes	
+row_1	SMAD1	SMAD family member 1 [Source:HGNC Symbol;Acc:HGNC:6767]	195	129.1115264892578	0.19174086	Yes	
+row_2	BMP2	bone morphogenetic protein 2 [Source:HGNC Symbol;Acc:HGNC:1069]	231	117.9754638671875	0.28232303	Yes	
+row_3	SMAD7	SMAD family member 7 [Source:HGNC Symbol;Acc:HGNC:6773]	256	110.51310729980469	0.36798123	Yes	
+row_4	TGFB1	transforming growth factor beta 1 [Source:HGNC Symbol;Acc:HGNC:11766]	314	95.87860870361328	0.43897873	Yes	
+row_5	BMPR2	bone morphogenetic protein receptor type 2 [Source:HGNC Symbol;Acc:HGNC:1078]	429	76.55586242675781	0.4893875	Yes	
+row_6	HIPK2	homeodomain interacting protein kinase 2 [Source:HGNC Symbol;Acc:HGNC:14402]	538	63.02358627319336	0.52958816	Yes	
+row_7	CTNNB1	catenin beta 1 [Source:HGNC Symbol;Acc:HGNC:2514]	631	55.96129608154297	0.56564146	Yes	
+row_8	PMEPA1	"prostate transmembrane protein, androgen induced 1 [Source:HGNC Symbol;Acc:HGNC:14107]"	900	40.1279182434082	0.5729677	Yes	
+row_9	THBS1	thrombospondin 1 [Source:HGNC Symbol;Acc:HGNC:11785]	981	37.037689208984375	0.595077	Yes	
+row_10	KLF10	Kruppel like factor 10 [Source:HGNC Symbol;Acc:HGNC:11810]	1000	36.34990692138672	0.6223249	Yes	
+row_11	ACVR1	activin A receptor type 1 [Source:HGNC Symbol;Acc:HGNC:171]	1080	33.918853759765625	0.64204633	Yes	
+row_12	SKI	SKI proto-oncogene [Source:HGNC Symbol;Acc:HGNC:10896]	1156	31.984899520874023	0.6605971	Yes	
+row_13	SKIL	SKI like proto-oncogene [Source:HGNC Symbol;Acc:HGNC:10897]	1794	19.58859634399414	0.61775666	No	
+row_14	NCOR2	nuclear receptor corepressor 2 [Source:HGNC Symbol;Acc:HGNC:7673]	2120	16.106792449951172	0.60075885	No	
+row_15	SPTBN1	"spectrin beta, non-erythrocytic 1 [Source:HGNC Symbol;Acc:HGNC:11275]"	2517	12.82188606262207	0.5746388	No	
+row_16	ID3	"inhibitor of DNA binding 3, HLH protein [Source:HGNC Symbol;Acc:HGNC:5362]"	2543	12.694669723510742	0.58243865	No	
+row_17	SMAD6	SMAD family member 6 [Source:HGNC Symbol;Acc:HGNC:6772]	2629	12.069103240966797	0.5842391	No	
+row_18	ID2	inhibitor of DNA binding 2 [Source:HGNC Symbol;Acc:HGNC:5361]	2818	10.730023384094238	0.57552975	No	
+row_19	PPM1A	"protein phosphatase, Mg2+/Mn2+ dependent 1A [Source:HGNC Symbol;Acc:HGNC:9275]"	3384	7.949954986572266	0.53003895	No	
+row_20	TGIF1	TGFB induced factor homeobox 1 [Source:HGNC Symbol;Acc:HGNC:11776]	3431	7.728855133056641	0.53196526	No	
+row_21	BCAR3	"BCAR3 adaptor protein, NSP family member [Source:HGNC Symbol;Acc:HGNC:973]"	3588	7.0593671798706055	0.52327216	No	
+row_22	ID1	"inhibitor of DNA binding 1, HLH protein [Source:HGNC Symbol;Acc:HGNC:5360]"	3750	6.497773170471191	0.5136741	No	
+row_23	XIAP	X-linked inhibitor of apoptosis [Source:HGNC Symbol;Acc:HGNC:592]	4407	4.595803260803223	0.4571719	No	
+row_24	ARID4B	AT-rich interaction domain 4B [Source:HGNC Symbol;Acc:HGNC:15550]	4956	3.3368334770202637	0.40957254	No	
+row_25	FNTA	"farnesyltransferase, CAAX box, alpha [Source:HGNC Symbol;Acc:HGNC:3782]"	5462	2.470224380493164	0.36522737	No	
+row_26	SMURF1	SMAD specific E3 ubiquitin protein ligase 1 [Source:HGNC Symbol;Acc:HGNC:16807]	6191	-3.104839324951172	0.30093738	No	
+row_27	RHOA	ras homolog family member A [Source:HGNC Symbol;Acc:HGNC:667]	6485	-3.6388163566589355	0.27696186	No	
+row_28	PPP1CA	protein phosphatase 1 catalytic subunit alpha [Source:HGNC Symbol;Acc:HGNC:9281]	6915	-4.555856227874756	0.24124406	No	
+row_29	SERPINE1	serpin family E member 1 [Source:HGNC Symbol;Acc:HGNC:8583]	8456	-11.036811828613281	0.10879881	No	
+row_30	NOG	noggin [Source:HGNC Symbol;Acc:HGNC:7866]	8725	-13.063429832458496	0.094608486	No	
+row_31	FURIN	"furin, paired basic amino acid cleaving enzyme [Source:HGNC Symbol;Acc:HGNC:8568]"	8728	-13.106524467468262	0.104844905	No	
+row_32	RAB31	"RAB31, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:9771]"	8786	-13.582465171813965	0.11041614	No	
+row_33	PPP1R15A	protein phosphatase 1 regulatory subunit 15A [Source:HGNC Symbol;Acc:HGNC:14375]	9236	-19.220184326171875	0.084522605	No	
+row_34	APC	APC regulator of WNT signaling pathway [Source:HGNC Symbol;Acc:HGNC:583]	9963	-35.8991813659668	0.046487853	No	
+row_35	CDH1	cadherin 1 [Source:HGNC Symbol;Acc:HGNC:1748]	10321	-54.1029167175293	0.05676295	No	
