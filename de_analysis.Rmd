@@ -20,6 +20,8 @@ output:
 library("DESeq2")
 library(tximport)
 library(plotly)
+library(Glimma)
+library("pcaExplorer")
 
 ```
 
@@ -133,8 +135,17 @@ boxplot(log10(assay(dds)))
 Log2 scale data with the vsd function from DEseq2 to remove the dependence of the variance on the mean, particurarly the high variance of the logarithm of count data when the mean is low. 
 ```{r,include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
 # Get log2 counts
+dds <- DESeq(dds)
+res <- results(dds)
 vsd <- vst(dds,blind=TRUE)
 ```
+
+### MDS plot 
+The multidimensional scaling (MDS) plot is frequently used to explore differences in samples. When data has been MDS transformed, the first two dimensions explain the greatest variance between samples, and the amount of variance decreases monotonically with increasing dimension.
+```{r,include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+glimmaMDS(dds)
+```
+
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
 # Check distributions of samples using boxplots
@@ -162,6 +173,14 @@ pheatmap(sampleDistMatrix,
 ```
 
 ```{r,  echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+
+pcaplot(vsd,intgroup = c("Annotation")) + 
+  ggplot2::ggtitle("PCA")
+
+```
+
+
+```{r,  echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
 plotPCA(vsd,intgroup="Annotation")
 
 ```
@@ -170,4 +189,26 @@ plotPCA(vsd,intgroup="Annotation")
 plotPCA(vsd,intgroup="Sample")
 ```
 
-We show a high correlation between the group treated and untreated, except the sample 31 which is different from the two other groups.
+
+
+### Dispersion plot 
+The dispersion plot below is typical, with the final estimates shrunk from the gene-wise estimates towards the fitted estimates. Some gene-wise estimates are flagged as outliers and not shrunk towards the fitted value, (this outlier detection is described in the manual page for estimateDispersionsMAP). The amount of shrinkage can be more or less than seen here, depending on the sample size, the number of coefficients, the row mean and the variability of the gene-wise estimates.
+```{r,  echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+plotDispEsts(dds)
+
+```
+
+```{r}
+par(mfrow=c(2,2),mar=c(2,2,1,1))
+ylim <- c(-10.5,10.5)
+resGA <- results(dds, lfcThreshold=2.5, altHypothesis="greaterAbs")
+resLA <- results(dds, lfcThreshold=2.5, altHypothesis="lessAbs")
+resG <- results(dds, lfcThreshold=2.5, altHypothesis="greater")
+resL <- results(dds, lfcThreshold=2.5, altHypothesis="less")
+drawLines <- function() abline(h=c(-2.5,2.5),col="dodgerblue",lwd=2)
+plotMA(resGA, ylim=ylim); drawLines()
+plotMA(resLA, ylim=ylim); drawLines()
+plotMA(resG, ylim=ylim); drawLines()
+plotMA(resL, ylim=ylim); drawLines()
+```
+
