@@ -3,7 +3,7 @@
     "path": "~/Projects/FMI_RNAseq/NTRK/project/differential_expression_NTRK.Rmd",
     "project_path": "differential_expression_NTRK.Rmd",
     "type": "r_markdown",
-    "hash": "3460537197",
+    "hash": "1551623089",
     "contents": "",
     "dirty": false,
     "created": 1649682796722.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "92,42",
-        "scrollLine": "85"
+        "cursorPosition": "554,60",
+        "scrollLine": "540"
     },
     "folds": "",
-    "lastKnownWriteTime": 1650312388,
+    "lastKnownWriteTime": 1650368271,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1650312388397,
+    "last_content_update": 1650368271492,
     "read_only": false,
     "read_only_alternatives": []
 }

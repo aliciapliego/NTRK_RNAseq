@@ -93,7 +93,7 @@ dds <- dds[keep,]
 Increased pval for filtering to p-value =  0.001
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 dds <- DESeq(dds)
-res <- results(dds,alpha=0.001, contrast = c("Annotation", "aResistant", "bNaive"))
+res <- results(dds,alpha=0.005, contrast = c("Annotation", "aResistant", "bNaive"))
 ```
 
 # Inspection and correction of p values 
@@ -140,13 +140,13 @@ main = "Resistant versus Naive, correct null model", xlab = "CORRECTED p-values"
 # Extracting differentially expressed genes 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-table(res2[,"padj"] < 0.1)
+table(res2[,"padj"] < 0.005)
 ```
 
 Summary of differential expressed genes:
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 resOrdered <- res2[order(res2$pvalue),]
-summary(res)
+summary(res2)
 ```
 
 Cutoff values:
@@ -235,8 +235,8 @@ plotCounts(dds, gene="ITGA6", intgroup="Annotation")
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-# Further filter DE genes based on Padj = 0.01,  and FC>1.5(L2FC = 0.58)
-res_filtered_pval <- subset(res2, padj <0.01)
+# Further filter DE genes based on Pvalue = 0.005,  and FC>1.5(L2FC = 0.58)
+res_filtered_pval <- subset(res2, pvalue <0.005)
 res_filtered_all_up <- subset(res_filtered_pval, log2FoldChange >0.58)
 res_filtered_all_up_df <- as.data.frame(res_filtered_all_up)
 
@@ -275,13 +275,14 @@ filtered <- filtered[order(filtered$metric),]
 #write.table(filtered ,file="DE_genes.rnk",quote=F,sep="\t",row.names=F)
 ```
 
+fdr.threshold = 0.005
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 rowsum.threshold <- 2.5 # user chosen
-fdr.threshold <- 0.01 # user chosen
+fdr.threshold <- 0.005 # user chosen
 rs <- rowSums(counts(dds))
 dds <- dds[ rs > rowsum.threshold ,]
 dds <- DESeq(dds)
-res <- results(dds, alpha=0.01, contrast = c("Annotation", "aResistant", "bNaive"), independentFiltering=FALSE) # use count threshold instead of IF
+res <- results(dds, alpha=0.005, contrast = c("Annotation", "aResistant", "bNaive"), independentFiltering=FALSE) # use count threshold instead of IF
 assayed.genes <- rownames(res)
 de.genes <- rownames(res)[ which(res$padj < fdr.threshold) ]
 ```
@@ -386,25 +387,26 @@ heatmaply(heat,
 
 Link to enrichment results:
 
-Read more [here](GSEA_NTRK_hallmarks/index.html) 
+Read more [here](GSEA_NTRK_hallmarks_2/index.html) 
 
 ## GSEA Oncogenic HALLMARKS
 
 Link to enrichment results:
 
-Read more [here](GSEA_NTRK_onco/index.html) 
+Read more [here](GSEA_NTRK_oncogenes_2/index.html) 
 
 ## GSEA GO Biological Process TERMS
 
 Link to enrichment results:
 
-Read more [here](GSEA_NTRK_go_bp/index.html) 
+Read more [here](GSEA_NTRK_gobp_2/index.html) 
 
 
 
 # Cluster Profiles
 
 ## GO Enrichment
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # we want the log2 fold change 
 original_gene_list = res2$log2FoldChange
@@ -418,21 +420,29 @@ gene_list<-na.omit(original_gene_list)
 # sort the list in decreasing order (required for clusterProfiler)
 gene_list = sort(gene_list, decreasing = TRUE)
 
+gene <- names(gene_list)[abs(gene_list) > 2]
+
+
 gse <- gseGO(geneList=gene_list, 
              ont ="BP", 
              keyType = "SYMBOL",
-             minGSSize = 3, 
+             minGSSize = 10, 
              maxGSSize = 800, 
-             pvalueCutoff = 0.05, 
+             pvalueCutoff = 0.01, 
              verbose = TRUE, 
              OrgDb = org.Hs.eg.db, 
-             pAdjustMethod = "none")
+             pAdjustMethod = "BH")
+```
+
+
+```{r}
+dotplot(gse, showCategory = 10, font.size=14, split=".sign") + facet_grid(.~.sign)
 ```
 
 ```{r , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
 
-require(DOSE)
-dotplot(gse, showCategory=3, split=".sign") + facet_grid(.~.sign)
+#require(DOSE)
+#dotplot(gse, showCategory=3, split=".sign") + facet_grid(.~.sign)
 
 ```
 
@@ -449,7 +459,10 @@ dotplot(gse, showCategory=3, split=".sign") + facet_grid(.~.sign)
 ids = bitr(names(original_gene_list), fromType = "SYMBOL", toType = "ENTREZID", OrgDb = org.Hs.eg.db)
 ```
 
-#### GSEA with Cluster Profiler
+#### GSEA KEGG pathways with Cluster Profiler
+
+The normalized enrichment score (NES) is the primary statistic for examining gene set enrichment results. By normalizing the enrichment score, GSEA accounts for differences in gene set size and in correlations between gene sets and the expression dataset; therefore, the normalized enrichment scores (NES) can be used to compare analysis results across gene sets.
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # remove duplicate IDS (here we use "SYMBOL", but it should be whatever was selected as keyType)
 dedup_ids = ids[!duplicated(ids[c("SYMBOL")]),]
@@ -480,11 +493,23 @@ kk2 = gseKEGG(geneList     = kegg_gene_list,
                pvalueCutoff = 0.05,
                pAdjustMethod = "none",
                keyType       = "ncbi-geneid")
+
+kk3 = gseMKEGG(geneList     = kegg_gene_list,
+               organism     = kegg_organism,
+               minGSSize    = 3,
+               maxGSSize    = 800,
+               pvalueCutoff = 0.05)
+```
+
+Plot results from KEGG pathways 
+```{r, echo=FALSE}
+out_kk3 = as.data.frame(kk2@result)
+DT::datatable(out_kk3)
 ```
 
 ```{r , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
 
-dotplot(kk2, showCategory = 5, title = "Enriched Pathways" , split=".sign") + facet_grid(.~.sign)
+dotplot(kk2, showCategory = 15, title = "Enriched Pathways",font.size=14, split=".sign") + facet_grid(.~.sign)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -502,9 +527,37 @@ Plot the ENTREZ ID to Genesymbol table
 DT::datatable(df2)
 ```
 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(msigdbr)
+m_df <- msigdbr(species = "Homo sapiens")
+head(m_df, 2) %>% as.data.frame
+m_t2g <- msigdbr(species = "Homo sapiens", category = "C6") %>% 
+  dplyr::select(gs_name, entrez_gene)
+head(m_t2g)
+
+```
+
+### Oncogenic pathways
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+C6_t2g <- msigdbr(species = "Homo sapiens", category = "C6") %>% 
+  dplyr::select(gs_name, entrez_gene)
+#head(C6_t2g)
+em2 <- GSEA(kegg_gene_list, TERM2GENE = C6_t2g)
+out_em2 = as.data.frame(em2@result)
+#head(em2)
+```
+
+```{r, echo=FALSE}
+DT::datatable(out_em2)
+```
+
+```{r , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
+dotplot(em2, showCategory = 15,title = "Enriched Pathways" ,font.size=14, split=".sign") + facet_grid(.~.sign)
+```
+
 ```{r , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 7, fig.height = 7, fig.align='center'}
 
-#gseaplot(kk2, by = "all", title = kk2$Description[52], geneSetID = 1)
+gseaplot(em2, by = "all", title = em2$Description[1], geneSetID = 1)
 
 ```
 
@@ -512,5 +565,38 @@ DT::datatable(df2)
 
 #gseaplot(kk2, by = "all", title = kk2$Description[13], geneSetID = 1)
 
+```
+
+```{r enrichWP, echo=FALSE, warning=FALSE, message=FALSE}
+
+gene <- names(kegg_gene_list)[abs(kegg_gene_list) > 2]
+
+enrichWP(gene, organism = "Homo sapiens") 
+```
+
+```{r em3, echo=FALSE, warning=FALSE, message=FALSE}
+em3 <- gseWP(kegg_gene_list, organism = "Homo sapiens")
+```
+
+```{r dotplot em3 , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
+dotplot(em3, title = "Enriched Pathways") 
+```
+
+```{r reactomePA, echo=FALSE, warning=FALSE, message=FALSE}
+#library(ReactomePA)
+#x <- enrichPathway(gene=de, pvalueCutoff = 0.05, readable=TRUE)
+
+#y <- gsePathway(geneList, 
+#                pvalueCutoff = 0.2,
+#                pAdjustMethod = "BH", 
+#                verbose = FALSE)
+#head(y)
+```
+
+```{r viepathway, echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
+
+#viewPathway("E2F mediated regulation of DNA replication", 
+#            readable = TRUE, 
+#            foldChange = geneList)
 ```
 
