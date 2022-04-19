@@ -435,7 +435,8 @@ gse <- gseGO(geneList=gene_list,
 ```
 
 
-```{r}
+```{r , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
+
 dotplot(gse, showCategory = 10, font.size=14, split=".sign") + facet_grid(.~.sign)
 ```
 
@@ -530,10 +531,10 @@ DT::datatable(df2)
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(msigdbr)
 m_df <- msigdbr(species = "Homo sapiens")
-head(m_df, 2) %>% as.data.frame
+
 m_t2g <- msigdbr(species = "Homo sapiens", category = "C6") %>% 
   dplyr::select(gs_name, entrez_gene)
-head(m_t2g)
+
 
 ```
 
@@ -579,7 +580,7 @@ em3 <- gseWP(kegg_gene_list, organism = "Homo sapiens")
 ```
 
 ```{r dotplot em3 , echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height = 10, fig.align='center'}
-dotplot(em3, title = "Enriched Pathways") 
+dotplot(em3, title = "Enriched Pathways",font.size=14, split=".sign") + facet_grid(.~.sign)
 ```
 
 ```{r reactomePA, echo=FALSE, warning=FALSE, message=FALSE}
